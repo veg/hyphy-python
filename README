@@ -3,7 +3,7 @@ To build, type:
 
 $python setup.py install
 
-To test, cd to Examples/Python and run
+To test, cd to Examples and run
 
 $python BasicHyPhy.py
 

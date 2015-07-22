@@ -2,7 +2,7 @@
 
 from distutils.core      import setup, Extension
 from distutils.sysconfig import get_python_inc
-from os                  import listdir, getcwd, path
+from os                  import listdir, getcwd, path, system
 from glob                import glob
 import sys
 
@@ -11,6 +11,7 @@ from platform import architecture, mac_ver
 #incdir = get_python_inc(plat_specific=1)
 #print incdir
 
+system("git submodule update --init --recursive")
 
 #build the list of source files
 scriptPath   = path.dirname(path.realpath(__file__))

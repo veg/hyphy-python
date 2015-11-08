@@ -51,7 +51,7 @@ openmp = ['-fopenmp'] if mac_ver()[0] < '10.7.0' else []
 
 setup(
     name = 'HyPhy',
-    version = '0.1.1',
+    version = '0.1.2',
     description = 'HyPhy package interface library',
     author = 'Sergei L Kosakovsky Pond',
     author_email = 'spond@ucsd.edu',

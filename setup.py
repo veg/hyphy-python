@@ -5,6 +5,10 @@ from distutils.sysconfig import get_python_inc
 from os                  import listdir, getcwd, path, system
 from glob                import glob
 import sys
+import tempfile
+import os
+import subprocess
+import shutil
 
 from platform import architecture, mac_ver
 
@@ -46,16 +50,44 @@ includePaths += [linkPath, contribPath, sqlitePath]
 # check for 64bit and define as such
 define_macros = [('__HYPHY_64__', None)] if '64' in architecture()[0] else []
 
-# openmp on Mac OS X Lion is broken
-openmp = ['-fopenmp'] if mac_ver()[0] < '10.7.0' else []
+# see http://openmp.org/wp/openmp-compilers/
+omp_test = \
+r"""
+#include <omp.h>
+#include <stdio.h>
+int main() {
+#pragma omp parallel
+printf("Hello from thread %d, nthreads %d\n", omp_get_thread_num(), omp_get_num_threads());
+}
+"""
+
+def check_for_openmp():
+    tmpdir = tempfile.mkdtemp()
+    curdir = os.getcwd()
+    os.chdir(tmpdir)
+
+    filename = r'test.c'
+    with open(filename, 'w') as file:
+        file.write(omp_test)
+    with open(os.devnull, 'w') as fnull:
+        result = subprocess.call(['cc', '-fopenmp', filename],
+                                 stdout=fnull, stderr=fnull)
+
+    os.chdir(curdir)
+    #clean up
+    shutil.rmtree(tmpdir)
+
+    return result
+    
+openmp = ['-fopenmp'] if check_for_openmp() == 0 else []
 
 setup(
     name = 'HyPhy',
     version = '0.1.2',
     description = 'HyPhy package interface library',
-    author = 'Sergei L Kosakovsky Pond',
-    author_email = 'spond@ucsd.edu',
-    url = 'http://www.hyphy.org/',
+    author = 'Sergei L Kosakovsky Pond and Steven Weaver',
+    author_email = 'spond@temple.edu',
+    url = 'http://github.com/veg/hyphy',
     packages = ['HyPhy'],
     package_dir = {'HyPhy': 'HyPhy'},
     ext_modules = [Extension('_HyPhy',

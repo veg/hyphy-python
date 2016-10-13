@@ -1,6 +1,7 @@
 #!/usr/bin/python
 
-from distutils.core      import setup, Extension
+#from distutils.core      import setup, Extension
+from setuptools import setup, Extension
 from distutils.sysconfig import get_python_inc
 from os                  import listdir, getcwd, path, system
 from glob                import glob
@@ -78,7 +79,7 @@ def check_for_openmp():
     shutil.rmtree(tmpdir)
 
     return result
-    
+
 openmp = ['-fopenmp'] if check_for_openmp() == 0 else []
 
 setup(

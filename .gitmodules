@@ -1,4 +1,0 @@
-[submodule "hyphy"]
-	path = hyphy-src
-	url = git://github.com/veg/hyphy.git
-	branch = master

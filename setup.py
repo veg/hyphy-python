@@ -50,7 +50,7 @@ define_macros = [('__HYPHY_64__', None)] if '64' in architecture()[0] else []
 openmp = ['-fopenmp'] if mac_ver()[0] < '10.7.0' else []
 
 setup(
-    name = 'HyPhy',
+    name = 'hyphy-python',
     version = '0.1.1',
     description = 'HyPhy package interface library',
     author = 'Sergei L Kosakovsky Pond',

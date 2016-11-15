@@ -16,8 +16,6 @@ from platform import architecture, mac_ver
 #incdir = get_python_inc(plat_specific=1)
 #print incdir
 
-system("git submodule update --init --recursive")
-
 #build the list of source files
 scriptPath   = path.dirname(path.realpath(__file__))
 libDir       = path.split(scriptPath)[1]
@@ -84,7 +82,7 @@ openmp = ['-fopenmp'] if check_for_openmp() == 0 else []
 
 setup(
     name = 'hyphy-python',
-    version = '0.1.5',
+    version = '0.1.6',
     description = 'HyPhy package interface library',
     author = 'Sergei L Kosakovsky Pond and Steven Weaver',
     author_email = 'spond@temple.edu',

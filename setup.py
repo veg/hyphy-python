@@ -101,6 +101,7 @@ setup(
                              ('__HEADLESS__', None),
                              ('_HYPHY_LIBDIRECTORY_', '"/usr/local/lib/hyphy"')] + define_macros,
             libraries = ['pthread', 'ssl', 'crypto', 'curl'],
+            library_dirs = ['/usr/local/lib/', '/usr/lib/', '/usr/local/opt/openssl/lib/'],
             extra_compile_args = [
                     '-Wno-int-to-pointer-cast',
                     '-Wno-char-subscripts',

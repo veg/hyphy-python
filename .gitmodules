@@ -1,0 +1,3 @@
+[submodule "hyphy-src"]
+	path = hyphy-src
+	url = https://github.com/veg/hyphy.git

@@ -82,7 +82,7 @@ openmp = ['-fopenmp'] if check_for_openmp() == 0 else []
 
 setup(
     name = 'hyphy-python',
-    version = '0.1.11',
+    version = '0.1.12',
     description = 'HyPhy package interface library',
     author = 'Sergei L Kosakovsky Pond and Steven Weaver',
     author_email = 'spond@temple.edu',

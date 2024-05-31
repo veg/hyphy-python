@@ -10,18 +10,18 @@ from sys import version_info
 if version_info >= (2,6,0):
     def swig_import_helper():
         from os.path import dirname
-        import imp
-        fp = None
+        import importlib
+        module_spec = None
         try:
-            fp, pathname, description = imp.find_module('_HyPhy', [dirname(__file__)])
+            module_spec = importlib.util.find_spec('_HyPhy', [dirname(__file__)])
         except ImportError:
             import _HyPhy
             return _HyPhy
-        if fp is not None:
+        if module_spec is not None:
             try:
-                _mod = imp.load_module('_HyPhy', fp, pathname, description)
+                _mod = importlib.import_module('_HyPhy', module_spec.origin)
             finally:
-                fp.close()
+                pass
             return _mod
     _HyPhy = swig_import_helper()
     del swig_import_helper

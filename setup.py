@@ -89,6 +89,7 @@ setup(
     url = 'http://github.com/veg/hyphy',
     packages = ['HyPhy'],
     package_dir = {'HyPhy': 'HyPhy'},
+    python_requires = '>=3.0',
     ext_modules = [Extension('_HyPhy',
             sourceFiles,
             include_dirs = includePaths,

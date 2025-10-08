@@ -153,6 +153,7 @@ class _THyPhy
 
 public:
 
+    _THyPhy              (const char*, long = 1);
     _THyPhy              (_ProgressCancelHandler*, const char*, long = 1);
     // create an instance with a given progress/cancel handler
     // the second argument is a path to the directory that
@@ -162,7 +163,6 @@ public:
     // and specifies the number of threads that HyPhy should try to spawn
 
 
-    _THyPhy              (const char*, long = 1);
     // use a default (return true)
     // callback
 

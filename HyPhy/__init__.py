@@ -11,6 +11,7 @@ if version_info >= (2,6,0):
     def swig_import_helper():
         from os.path import dirname
         import importlib
+        import importlib.util
         module_spec = None
         try:
             module_spec = importlib.util.find_spec('_HyPhy', [dirname(__file__)])
